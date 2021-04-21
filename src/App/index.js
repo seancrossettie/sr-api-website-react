@@ -12,7 +12,10 @@ function App() {
   const handleClick = () => {
     if (showPunchLine === true) {
       setShowPunchline(false);
-      setSingleJoke();
+      getJokes()
+        .then((joke) => {
+          setSingleJoke(joke);
+        });
     } else {
       setShowPunchline(true);
     }
@@ -31,7 +34,7 @@ function App() {
       <br />
       <p>{showPunchLine ? singleJoke.punchline : ''}</p>
       <Button color="info" onClick={handleClick}>
-        Get Punchline
+        {showPunchLine ? 'Get Another Joke' : 'Get Punchline'}
       </Button>
     </div>
   );
