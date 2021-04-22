@@ -30,6 +30,7 @@ function App() {
 
   return (
     <div className='App'>
+      <h1>Joke Generator</h1>
       {singleJoke.setup}
       <br />
       <p>{showPunchLine ? singleJoke.punchline : ''}</p>
