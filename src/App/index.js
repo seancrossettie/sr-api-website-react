@@ -12,8 +12,9 @@ import getLyrics from '../helpers/data/lyricsData';
 function App() {
   const [singleJoke, setSingleJoke] = useState({});
   const [showPunchLine, setShowPunchline] = useState(false);
-  // const [songLyrics, setSongLyrics] = useState({});
-  const [showLyrics, setShowLyrics] = useState(false);
+  const [artist, setArtist] = useState();
+  const [song, setSong] = useState();
+  const [showLyrics, setShowLyrics] = useState({});
 
   const jokeHandleClick = () => {
     if (showPunchLine === true) {
@@ -32,8 +33,8 @@ function App() {
       setShowLyrics(false);
     } else {
       setShowLyrics(true);
-      getLyrics('incubus', 'drive')
-        .then((lyrics) => console.warn(lyrics));
+      getLyrics(artist, song)
+        .then((lyrics) =>  setShowLyrics(lyrics));
     }
   };
 
@@ -65,6 +66,9 @@ function App() {
                   name="artistName"
                   id="artistName"
                   placeholder="Artist"
+                  onChange={(e) => {
+                    setArtist(e.target.value);
+                  }}
                   />
               </FormGroup>
             </Col>
@@ -76,6 +80,9 @@ function App() {
                   name="songName"
                   id="songName"
                   placeholder="Song"
+                  onChange={(e) => {
+                    setSong(e.target.value);
+                  }}
                   />
               </FormGroup>
             </Col>
