@@ -10,8 +10,10 @@ import './App.scss';
 function App() {
   const [singleJoke, setSingleJoke] = useState({});
   const [showPunchLine, setShowPunchline] = useState(false);
+  // const [songLyrics, setSongLyrics] = useState({});
+  const [showLyrics, setShowLyrics] = useState(false);
 
-  const handleClick = () => {
+  const jokeHandleClick = () => {
     if (showPunchLine === true) {
       setShowPunchline(false);
       getJokes()
@@ -20,6 +22,14 @@ function App() {
         });
     } else {
       setShowPunchline(true);
+    }
+  };
+
+  const lyricsHandleClick = () => {
+    if (showLyrics === true) {
+      setShowLyrics(false);
+    } else {
+      setShowLyrics(true);
     }
   };
 
@@ -36,7 +46,7 @@ function App() {
       {singleJoke.setup}
       <br />
       <p>{showPunchLine ? singleJoke.punchline : ''}</p>
-      <Button color="info" onClick={handleClick}>
+      <Button color="info" onClick={jokeHandleClick}>
         {showPunchLine ? 'Get Another Joke' : 'Get Punchline'}
       </Button>
       <div className="m-5">
