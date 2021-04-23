@@ -7,7 +7,7 @@ const getWeather = () => new Promise((resolve, reject) => {
   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Nashville&appid=${key}`)
     .then((response) => {
       if (response.data) {
-        console.warn(response.data);
+        resolve(response.data);
       } else {
         resolve([]);
       }

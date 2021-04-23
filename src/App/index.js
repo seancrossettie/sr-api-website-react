@@ -4,7 +4,6 @@ import {
 } from 'reactstrap';
 import getJokes from '../helpers/data/jokeData';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.scss';
 import getWeather from '../helpers/data/weatherData';
 import getLyrics from '../helpers/data/lyricsData';
@@ -14,7 +13,8 @@ function App() {
   const [showPunchLine, setShowPunchline] = useState(false);
   const [artist, setArtist] = useState();
   const [song, setSong] = useState();
-  const [showLyrics, setShowLyrics] = useState({});
+  const [showLyrics, setShowLyrics] = useState(false);
+  const [songLyrics, setSongLyrics] = useState({});
 
   const jokeHandleClick = () => {
     if (showPunchLine === true) {
@@ -34,7 +34,7 @@ function App() {
     } else {
       setShowLyrics(true);
       getLyrics(artist, song)
-        .then((lyrics) =>  setShowLyrics(lyrics));
+        .then((lyrics) => setSongLyrics(lyrics));
     }
   };
 
@@ -88,6 +88,7 @@ function App() {
             </Col>
           </Row>
         </Form>
+        <p>{songLyrics.lyrics}</p>
         <Button color="info" onClick={lyricsHandleClick}>
           {showLyrics ? 'Get More Lyrics' : 'Find a Song'}
         </Button>
