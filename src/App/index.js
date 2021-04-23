@@ -6,6 +6,8 @@ import getJokes from '../helpers/data/jokeData';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.scss';
+import getWeather from '../helpers/data/weatherData';
+import getLyrics from '../helpers/data/lyricsData';
 
 function App() {
   const [singleJoke, setSingleJoke] = useState({});
@@ -30,6 +32,8 @@ function App() {
       setShowLyrics(false);
     } else {
       setShowLyrics(true);
+      getLyrics('incubus', 'drive')
+        .then((lyrics) => console.warn(lyrics));
     }
   };
 
@@ -79,6 +83,17 @@ function App() {
         </Form>
         <Button color="info" onClick={lyricsHandleClick}>
           {showLyrics ? 'Get More Lyrics' : 'Find a Song'}
+        </Button>
+      </div>
+      <div className="m-5">
+      <h1>Weather</h1>
+        <Button
+          color="info"
+          onClick={() => {
+            getWeather();
+          }}
+        >
+          Get Weather
         </Button>
       </div>
     </div>
