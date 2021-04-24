@@ -1,5 +1,5 @@
 import axios from 'axios';
-import weatherApiKey from '../../apiKey';
+import weatherApiKey from './apiKeys';
 
 const key = weatherApiKey;
 
