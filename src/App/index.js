@@ -1,16 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import JokeForm from '../components/JokeForm';
-import LyricsForm from '../components/LyricsForm';
-import WeatherForm from '../components/WeatherForm';
+import { BrowserRouter as Router } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 function App() {
   return (
     <div className='App'>
-      <JokeForm />
-      <LyricsForm />
-      <WeatherForm />
+     <Router>
+       <NavBar />
+     </Router>
     </div>
   );
 }
